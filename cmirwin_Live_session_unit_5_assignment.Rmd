@@ -1,0 +1,143 @@
+---
+title: "Live Session Unit 5 Assignment"
+output: html_document
+---
+
+Question 1
+
+  A. The log of a positive number
+  ```{r}
+  log(10)
+  ```
+  
+  B. What is the default base for the log function? Calculate the log of your previous number with a different base
+  ```{r}
+  log10(10)
+  ```
+  
+  C. Log of negitive Number
+  ```{r}
+  #this is impossible due to the fact that you cant take the log of a negitive number. 
+  ```
+  
+  D. The square-root of a positive number.
+  ```{r}
+  sqrt(64)
+  ```
+
+Question 2 - Random Number Generation
+
+  A. Create a vector of 15 standard normal random variables. Calculate its mean and SD.
+  
+```{r}
+    random.variables <- runif(15)
+    
+    random.variables
+    
+    mean(random.variables)
+    
+    sd(random.variables)
+```
+
+  B. Change the mean to 10 and the SD to 2 and recalculate the vector of 15 random normal variables. Calculate its mean and SD.
+  
+```{r}
+  random.variables <- rnorm(random.variables, mean = 10, sd = 2)
+
+  random.variables
+  
+  mean(random.variables)
+  
+  sd(random.variables)
+```
+
+  C. Why are the means and SD not exactly the same as the means and SDs specified in the function? 
+      This is due to the fact that the numbers are randomly assigned and that the process runs the randomization 
+      multiple times and takes the averages of 
+      those calculations. 
+
+Question 3
+
+  C. Enter these vectors into R.
+  
+```{r}
+  people.weights <- c(60, 72, 57, 90, 95, 72)
+  people.heights <- c(1.80, 1.85, 1.72, 1.90, 1.74, 1.91)
+```
+  
+  D. Create a scatterplot of weight vs. height. Interpret the scatterplot.
+  
+```{r}
+  people.weights <- c(60, 72, 57, 90, 95, 72)
+  
+  people.heights <- c(1.80, 1.85, 1.72, 1.90, 1.74, 1.91)
+  
+  plot(people.heights, people.weights)
+```
+  
+  
+  E. Calculate the BMI for each individual. (BMI = weight in kg divided by the square of the height in m)
+```{r}
+  
+  people.weights <- c(60, 72, 57, 90, 95, 72)
+  
+  people.heights <- c(1.80, 1.85, 1.72, 1.90, 1.74, 1.91)
+  
+  people.heightsSq <- people.heights^2
+  
+  people.weights / people.heightsSq
+```
+
+  F. Calculate the mean for weight.
+```{r}
+  
+  people.weights <- c(60, 72, 57, 90, 95, 72)
+  
+  mean(people.weights)
+```
+
+  G. Subtract the mean from each value of weight.
+```{r}
+  people.weights <- c(60, 72, 57, 90, 95, 72)
+  
+  meanWeight <- mean(people.weights)
+  
+  people.weights - meanWeight
+```
+
+  
+  H. Sum the result. Now you know why we square the deviations from the mean to calculate a standard deviation!
+```{r}
+  people.weights <- c(60, 72, 57, 90, 95, 72)
+  
+  meanWeight <- mean(people.weights)
+  
+  people.weightDev <- people.weights - meanWeight
+  
+  sum(people.weightDev)
+  
+```
+
+  
+Question 4
+    A.Your data science profile. Enter your data science profile into R as a data frame with two columns. Call it by your first name. The categories           are computer programming, math, statistics, machine learning, domain expertise, communication and presentation skills, and data visualization. Your       ranking for each category 1 5, with 5 as best.  Create a bar graph of your data science profile. When you submit your work, please submit your           code, including the data entry piece.
+    
+      
+```{r}
+    categories <- c("computer programming", "math", "statistics", "machine learning", "domain expertise", "communication and presentation skills", "data visualization")
+    ranking <- c(3,3,1,1,3,3,3)
+    chris.irwin <- data.frame("Categories", "Ranking")
+    chris.irwin <- data.frame(categories, ranking)
+    chris.irwin
+
+```
+  
+    B. Create a graph
+    
+      
+```{r}
+library(plotly)
+graph <- plot_ly(x=chris.irwin$categories, y = chris.irwin$ranking, name = "Ranking Bar Chart", type = "bar")
+graph
+```
+
